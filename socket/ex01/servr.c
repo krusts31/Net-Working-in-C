@@ -1,4 +1,5 @@
 #include <sys/types.h> 
+#include <arpa/inet.h>
 #include <sys/socket.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +25,7 @@ int	main()
 	}
 	server_address.sin_family = AF_INET;
 	server_address.sin_port = htons(9002);
-	server_address.sin_addr.s_addr = INADDR_ANY;	//any address on the local machine
+	server_address.sin_addr.s_addr = inet_addr("192.168.1.23");	//any address on the local machine
 
 	fd_bind = bind(server_socket, (const struct sockaddr*) &server_address, sizeof(server_address));
 	if (fd_bind == -1)

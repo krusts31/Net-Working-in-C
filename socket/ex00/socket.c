@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 #include <string.h>
 
 //	int bind(int sockfd, const struct sockaddr *addr,socklen_t addrlen);
@@ -19,7 +20,7 @@ int	main()
 
 	server_address.sin_family = AF_INET;
 	server_address.sin_port = htons(9002);
-	server_address.sin_addr.s_addr = INADDR_ANY;
+	server_address.sin_addr.s_addr = inet_addr("192.168.1.218");
 	fd_socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (fd_socket == -1)
 		printf("Failed to create a socket\n");

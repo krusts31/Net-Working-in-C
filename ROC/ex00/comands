@@ -1,0 +1,2 @@
+gcc receiver_sox.c -lroc -lsox
+gcc sender_sinewave.c -lroc -lm
