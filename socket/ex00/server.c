@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 #include <string.h>
 
 int	main()
@@ -19,7 +20,7 @@ int	main()
 	server_socket = socket(AF_INET, SOCK_STREAM, 0);
 	server_address.sin_family = AF_INET;
 	server_address.sin_port = htons(9002);
-	server_address.sin_addr.s_addr = INADDR_ANY;	//any address on the local machine
+	server_address.sin_addr.s_addr = inet_addr("192.128.1.218");	//any address on the local machine
 
 	fd_bind = bind(server_socket, (struct sockaddr*) &server_address, sizeof(server_address));
 	if (fd_bind == -1)
